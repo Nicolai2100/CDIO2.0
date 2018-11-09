@@ -7,10 +7,11 @@ import static org.junit.Assert.*;
 
 public class DiceCupControllerTest {
     Gui_Handler gui = new Gui_Handler();
-    DiceCupController diceCup = new DiceCupController(2,gui);
 
     @Test
     public void rollAllDice() {
+        DiceCupController diceCup = new DiceCupController(2,gui);
+
         int die1 = diceCup.getRef(0).getFaceValue();
         int die2 = diceCup.getRef(1).getFaceValue();
         assertEquals(0, die1);
@@ -24,6 +25,8 @@ public class DiceCupControllerTest {
 
     @Test
     public void getSum() {
+        DiceCupController diceCup = new DiceCupController(2,gui);
+
         assertEquals(diceCup.getSum(), 0);
         rollAllDice();
         DieController die1 = diceCup.getRef(0);
@@ -33,11 +36,20 @@ public class DiceCupControllerTest {
 
     @Test
     public void rollAndGetSum() {
+        DiceCupController diceCup = new DiceCupController(2,gui);
+
         assertEquals(diceCup.getSum(), 0);
         int metodeSum = diceCup.rollAndGetSum();
         int sum = diceCup.getRef(0).getFaceValue() + diceCup.getRef(1).getFaceValue();
         assertEquals(metodeSum, sum);
         assertTrue(2 <= metodeSum && metodeSum <= 12);
 
+    }
+
+    @Test
+    public void setDieFaces() {
+        DiceCupController diceCup = new DiceCupController(2, gui);
+        int x = gui.setDieFaces();
+        assertTrue(1 <= x && x <= 6);
     }
 }
