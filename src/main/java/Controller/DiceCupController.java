@@ -4,11 +4,9 @@ import View.Gui_Handler;
 
 public class DiceCupController {
     private final DieController[] dice;
-    private Gui_Handler gui;
 
     //Constructor
     public DiceCupController(int noDice, Gui_Handler gui) {
-        this.gui = gui;
         dice = new DieController[noDice];
         int noFaces = setDieMax(gui.setDieFaces());
         for (int i = 0; i < noDice; i++) {
